@@ -3,10 +3,12 @@
 <p><b>Genre:&nbsp;</b><%= @movie.genre %></p>
 <p><b>Actors:&nbsp;</b>
   <% @actors.each.with_index do |actor, index| %>
-    <% if (index + 1) == @actors.count %>
-      <%= actor.name %>
-    <% else %>
-      <%= actor.name %>,&nbsp;
-    <% end %>
+    <div style="float: left; width: auto;" id="actor-<%= actor.id %>">
+      <% if (index + 1) == @actors.count %>
+        <%= actor.name %>
+      <% else %>
+        <%= actor.name %>,&nbsp;
+      <% end %>
+    </div>
   <% end %>
 </p>

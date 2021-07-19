@@ -25,5 +25,14 @@ RSpec.describe 'the movies show page' do
     expect(page).to have_content(@actor_3.name)
   end
 
-  it 'orders actors by age oldest to youngest'
+  it 'orders actors by age oldest to youngest' do
+    visit "/movies/#{@movie.id}"
+
+    youngest = find("#actor-#{@actor_2.id}")
+    middle = find("#actor-#{@actor_3.id}")
+    oldest = find("#actor-#{@actor_1.id}")
+
+    expect(youngest).to appear_before(middle)
+    expect(middle).to appear_before(oldest)
+  end
 end
