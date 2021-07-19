@@ -17,3 +17,13 @@
     </div>
   <% end %>
 </p>
+<br>
+<br>
+
+<div style="float: none; width: auto;" id="add_actor">
+  <%= form_with url: "/movies/#{@movie.id}", method: :get, local: true do |f|%>
+    <%= f.label "Add actor:" %>
+    <%= f.text_field :actor %>
+    <%= f.submit "Submit" %>
+  <% end %>
+</div>

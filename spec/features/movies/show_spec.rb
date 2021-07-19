@@ -7,6 +7,7 @@ RSpec.describe 'the movies show page' do
     @actor_1 = @movie.actors.create!(name: 'Harrison Ford', age: 78)
     @actor_2 = @movie.actors.create!(name: 'Brad Pitt', age: 57)
     @actor_3 = @movie.actors.create!(name: 'Tom Hanks', age: 65)
+    @actor_4 = Actor.create!(name: 'Leonardo DiCaprio', age: 46)
   end
 
   it 'displays movie attributes' do
@@ -23,12 +24,13 @@ RSpec.describe 'the movies show page' do
     expect(page).to have_content(@actor_1.name)
     expect(page).to have_content(@actor_2.name)
     expect(page).to have_content(@actor_3.name)
+    expect(page).to_not have_content(@actor_4.name)
   end
 
   it 'displays average age of actors' do
     visit "/movies/#{@movie.id}"
 
-    expect(page).to have_content("Average Age of Actors: #{Actor.average_age}")
+    expect(page).to have_content("Average Age of Actors: #{@movie.actors.average_age}")
   end
 
   it 'orders actors by age oldest to youngest' do
@@ -40,5 +42,24 @@ RSpec.describe 'the movies show page' do
 
     expect(youngest).to appear_before(middle)
     expect(middle).to appear_before(oldest)
+  end
+
+  it 'displays form to add an actor' do
+    visit "/movies/#{@movie.id}"
+
+    expect(page).to have_content('Add actor:')
+  end
+
+  it 'add actor form adds actor to movie' do
+    visit "/movies/#{@movie.id}"
+
+    fill_in 'actor', with: 'Leonardo DiCaprio'
+    click_button 'Submit'
+
+    expect(current_path).to eq("/movies/#{@movie.id}")
+
+    within("#actor-#{@actor_4.id}") do
+      expect(page).to have_content(@actor_4.name)
+    end
   end
 end
