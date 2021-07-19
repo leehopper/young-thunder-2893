@@ -24,5 +24,11 @@ RSpec.describe Actor do
         expect(Actor.average_age).to eq(67)
       end
     end
+
+    context '#search' do
+      it 'returns the actor with matching name' do
+        expect(Actor.search('Tom Hanks')).to eq(@actor_3)
+      end
+    end
   end
 end

@@ -11,6 +11,7 @@ class Actor < ApplicationRecord
   end
 
   def self.search(name)
-    where(name: name)
+    result = where(name: name)
+    result[0]
   end
 end
