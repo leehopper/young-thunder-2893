@@ -8,5 +8,9 @@ RSpec.describe 'the movies show page' do
 
   it 'displays movie attributes' do
     visit "/movies/#{@movie.id}"
+
+    expect(page).to have_content(@movie.title)
+    expect(page).to have_content(@movie.creation_year)
+    expect(page).to have_content(@movie.genre)
   end
 end
