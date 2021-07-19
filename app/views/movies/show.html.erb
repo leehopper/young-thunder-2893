@@ -1,6 +1,11 @@
 <h1><%= @movie.title %></h1>
+
 <p><b>Creation Year:&nbsp;</b><%= @movie.creation_year %></p>
+
 <p><b>Genre:&nbsp;</b><%= @movie.genre %></p>
+
+<p><b>Average Age of Actors:&nbsp;</b><%= @average_age %></p>
+
 <p><b>Actors:&nbsp;</b>
   <% @actors.each.with_index do |actor, index| %>
     <div style="float: left; width: auto;" id="actor-<%= actor.id %>">

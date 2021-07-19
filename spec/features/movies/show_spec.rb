@@ -25,6 +25,13 @@ RSpec.describe 'the movies show page' do
     expect(page).to have_content(@actor_3.name)
   end
 
+  it 'displays average age of actors' do
+    visit "/movies/#{@movie.id}"
+    save_and_open_page
+
+    expect(page).to have_content("Average Age of Actors: #{Actor.average_age}")
+  end
+
   it 'orders actors by age oldest to youngest' do
     visit "/movies/#{@movie.id}"
 
