@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'the studios index' do
   before(:each) do
-    @studio_1 = Studio.create(name: 'Mountain Films', location: 'Colorado')
-    @studio_2 = Studio.create(name: 'Lake Films', location: 'Michigan')
+    @studio_1 = Studio.create!(name: 'Mountain Films', location: 'Colorado')
+    @studio_2 = Studio.create!(name: 'Lake Films', location: 'Michigan')
   end
 
   it 'displays studio name and location' do
@@ -16,9 +16,9 @@ RSpec.describe 'the studios index' do
   end
 
   it 'displays moves for each studio' do
-    movie_1 = @studio_1.movies.create(title: 'Hiking', creation_year: 2021, genre: 'documentary')
-    movie_2 = @studio_1.movies.create(title: 'Rafting', creation_year: 2020, genre: 'action')
-    movie_3 = @studio_2.movies.create(title: 'Surfing', creation_year: 2019, genre: 'documentary')
+    movie_1 = @studio_1.movies.create!(title: 'Hiking', creation_year: 2021, genre: 'documentary')
+    movie_2 = @studio_1.movies.create!(title: 'Rafting', creation_year: 2020, genre: 'action')
+    movie_3 = @studio_2.movies.create!(title: 'Surfing', creation_year: 2019, genre: 'documentary')
 
     visit '/studios'
 
