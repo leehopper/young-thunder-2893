@@ -7,6 +7,6 @@ class Actor < ApplicationRecord
   end
 
   def self.average_age
-    average(:age).round(0)
+    average(:age).round(0).to_int
   end
 end
