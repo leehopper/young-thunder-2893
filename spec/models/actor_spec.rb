@@ -31,4 +31,10 @@ RSpec.describe Actor do
       end
     end
   end
+
+  describe 'class methods' do
+    context '#coworkers' do
+      it 'finds actors given actor has worked with'
+    end
+  end
 end

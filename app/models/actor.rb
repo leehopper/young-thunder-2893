@@ -14,4 +14,7 @@ class Actor < ApplicationRecord
     result = where(name: name)
     result[0]
   end
+
+  def coworkers
+  end 
 end
